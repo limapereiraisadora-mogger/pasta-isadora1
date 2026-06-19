@@ -1,1 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agrinho: Jornada do Alimento Interativa</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+    <header>
+        <div class="header-content">
+            <span class="badge">Projeto Agrinho</span>
+            <h1>Jornada do Alimento: Do Campo à Mesa 🌾</h1>
+            <p>Descubra como a tecnologia e a sustentabilidade transformam o agronegócio moderno. Clique nas etapas abaixo e explore!</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="timeline-nav">
+            <div class="timeline-line">
+                <div class="timeline-progress" id="progress-bar"></div>
+            </div>
+            
+            <div class="step-control active" data-step="plantio" onclick="mudarEtapa('plantio')">
+                <div class="circle">🌱</div>
+                <span class="step-label">1. O Plantio</span>
+            </div>
+            
+            <div class="step-control" data-step="colheita" onclick="mudarEtapa('colheita')">
+                <div class="circle">🚜</div>
+                <span class="step-label">2. A Colheita</span>
+            </div>
+            
+            <div class="step-control" data-step="transporte" onclick="mudarEtapa('transporte')">
+                <div class="circle">🚚</div>
+                <span class="step-label">3. O Transporte</span>
+            </div>
+            
+            <div class="step-control" data-step="mesa" onclick="mudarEtapa('mesa')">
+                <div class="circle">🍽️</div>
+                <span class="step-label">4. Na Mesa</span>
+            </div>
+        </section>
+
+        <section class="display-panel" id="main-panel">
+            <div class="panel-grid">
+                <div class="panel-text">
+                    <div class="tag-status" id="panel-tag">Carregando...</div>
+                    <h2 id="panel-title">Título da Etapa</h2>
+                    <p id="panel-desc">Texto explicativo...</p>
+                    
+                    <div class="quick-tip-box">
+                        <strong>💡 Impacto Agrinho:</strong>
+                        <span id="panel-tip">Dica de sustentabilidade...</span>
+                    </div>
+                </div>
+                
+                <div class="panel-stats">
+                    <h3>Métricas de Sustentabilidade</h3>
+                    <div class="stat-card">
+                        <span class="stat-value" id="stat-1">0%</span>
+                        <span class="stat-label" id="label-1">Métrica 1</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value" id="stat-2">Zero</span>
+                        <span class="stat-label" id="label-2">Métrica 2</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="quiz-preview-box">
+            <h3>Quer fazer a sua parte na vida real?</h3>
+            <p>Modificar pequenos hábitos na cidade ajuda a valorizar o esforço do produtor rural!</p>
+            <button class="btn-action" onclick="mostrarDesafio()">Ver Desafio do Dia</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>© Projeto Educacional Agrinho. Conectando o Campo e a Cidade através da Tecnologia.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
