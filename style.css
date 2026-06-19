@@ -1,1 +1,251 @@
 
+/* Reset e Variáveis de Cores */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+:root {
+    --primary: #1b5e20;
+    --primary-light: #4c8c4a;
+    --primary-dark: #003300;
+    --accent: #ffb300;
+    --bg-light: #f7faf7;
+    --text-dark: #2c3e50;
+    --card-bg: #ffffff;
+    --border-color: #e0ebd3;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+    color: white;
+    padding: 50px 20px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.header-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.badge {
+    background-color: var(--accent);
+    color: var(--primary-dark);
+    padding: 6px 12px;
+    font-weight: bold;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+/* Container Principal */
+.container {
+    max-width: 1000px;
+    width: 100%;
+    margin: -30px auto 40px auto;
+    padding: 0 20px;
+    flex: 1;
+}
+
+/* Linha do Tempo Física */
+.timeline-nav {
+    display: flex;
+    justify-content: space-between;
+    background: var(--card-bg);
+    padding: 25px 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.timeline-line {
+    position: absolute;
+    top: 45px;
+    left: 60px;
+    right: 60px;
+    height: 4px;
+    background-color: #e0e0e0;
+    z-index: 1;
+}
+
+.timeline-progress {
+    height: 100%;
+    width: 0%; /* Controlado dinamicamente pelo JS */
+    background-color: var(--primary-light);
+    transition: width 0.4s ease;
+}
+
+.step-control {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    flex: 1;
+}
+
+.step-control .circle {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    border: 3px solid #ffffff;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.step-control .step-label {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #7f8c8d;
+    transition: color 0.3s;
+}
+
+/* Estados Ativos da Linha do Tempo */
+.step-control.active .circle {
+    background-color: var(--primary);
+    transform: scale(1.15);
+    box-shadow: 0 0 0 5px rgba(46, 125, 50, 0.2);
+}
+
+.step-control.active .step-label {
+    color: var(--primary);
+}
+
+/* Painel de Exibição de Dados */
+.display-panel {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    padding: 35px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.panel-grid {
+    display: flex;
+    gap: 30px;
+}
+
+.panel-text {
+    flex: 1.5;
+}
+
+.panel-stats {
+    flex: 1;
+    background-color: #fcfdfe;
+    border: 1px solid #eef2f5;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.tag-status {
+    background-color: #e8f5e9;
+    color: var(--primary);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 12px;
+}
+
+.display-panel h2 {
+    color: var(--primary-dark);
+    margin-bottom: 15px;
+}
+
+.quick-tip-box {
+    margin-top: 25px;
+    background-color: #fffde7;
+    border-left: 4px solid var(--accent);
+    padding: 15px;
+    border-radius: 0 8px 8px 0;
+}
+
+/* Painel Lateral de Métricas */
+.panel-stats h3 {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.stat-card {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    border-left: 4px solid var(--primary-light);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.stat-card:last-child {
+    margin-bottom: 0;
+    border-left-color: var(--accent);
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: #7f8c8d;
+}
+
+/* Caixa de Desafio */
+.quiz-preview-box {
+    margin-top: 30px;
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    border-radius: 16px;
+    padding: 25px;
+    text-align: center;
+}
+
+.btn-action {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-action:hover {
+    background-color: var(--primary-dark);
+}
+
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: #95a5a6;
+    font-size: 0.85rem;
+}
